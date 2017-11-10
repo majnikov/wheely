@@ -1,0 +1,11 @@
+<h2>{{t 'cars.cars'}}</h2>
+<div class="list-group">
+  {{#each model as |car|}}
+    {{#link-to 'cars.car-edit' car.id classNames='list-group-item'}}
+      {{car.number}}
+      <p class="mb-1">
+        {{car.brand}}
+      </p>
+    {{/link-to}}
+  {{/each}}
+</div>

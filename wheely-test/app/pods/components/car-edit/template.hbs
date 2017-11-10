@@ -1,0 +1,57 @@
+<h2>{{t 'cars.car.edit'}}</h2>
+{{#bs-form submitOnEnter=false onSubmit=(action 'save') as |form|}}
+  {{#form.group}}
+    {{form.element controlType="text"
+                   value=car.number
+                   onChange=(action (mut car.number))
+                   placeholder=(t 'cars.car.number')
+                   classNameBindings='car.error.number.validation:has-error'
+    }}
+    <small class="text-danger">
+      {{car.error.number.validation}}
+    </small>
+    {{form.element controlType="text"
+                   value=car.brand
+                   onChange=(action (mut car.brand))
+                   placeholder=(t 'cars.car.brand')
+                   classNameBindings='car.error.brand.validation:has-error'
+    }}
+    <small class="text-danger">
+      {{car.error.brand.validation}}
+    </small>
+    {{form.element controlType="text"
+                   value=car.model
+                   onChange=(action 'setModel')
+                   placeholder=(t 'cars.car.model')
+                   classNameBindings='car.error.model.validation:has-error'
+    }}
+    <small class="text-danger">
+      {{car.error.model.validation}}
+    </small>
+    {{form.element controlType="text"
+                   value=car.year
+                   onChange=(action 'setYear')
+                   placeholder=(t 'cars.car.year')
+                   classNameBindings='car.error.year.validation:has-error'
+    }}
+    <small class="text-danger">
+      {{car.error.year.validation}}
+    </small>
+    {{form.element controlType="text"
+                   value=car.color
+                   onChange=(action (mut car.color))
+                   placeholder=(t 'cars.car.color')
+                   classNameBindings='car.error.color.validation:has-error'
+    }}
+    <small class="text-danger">
+      {{car.error.color.validation}}
+    </small>
+  {{/form.group}}
+  {{bs-button defaultText=(t 'buttons.save')
+              disabled=isButtonsDisabled
+              type="success"
+              buttonType="submit"}}
+  {{bs-button defaultText=(if car.isDirty (t 'buttons.cancel') (t 'buttons.back'))
+              disabled=isButtonsDisabled
+              onClick=(action 'cancel')}}
+{{/bs-form}}
